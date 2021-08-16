@@ -1,0 +1,3 @@
+rootProject.name = 'webservice'
+include 'logic'
+include 'boot-webservice'
