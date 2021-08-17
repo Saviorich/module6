@@ -86,4 +86,9 @@ class UserServiceImplTest {
         when(repository.findById(1)).thenReturn(Optional.empty());
         assertThrows(UserNotFoundException.class, () -> service.findById(1));
     }
+
+    @Test
+    void test_ShouldPass() {
+    	assertEquals(0, 0);
+    }
 }
