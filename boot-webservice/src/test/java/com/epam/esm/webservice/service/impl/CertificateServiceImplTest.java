@@ -114,4 +114,9 @@ class CertificateServiceImplTest {
         verify(repository).deleteById(id);
         assertThrows(ResourceNotFoundException.class, () -> service.findById(id));
     }
+
+    @Test
+    void test_ShouldPass() {
+        assertTrue(true);
+    }
 }
