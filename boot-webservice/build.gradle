@@ -1,6 +1,7 @@
 plugins {
 	id 'org.springframework.boot' version '2.5.2'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id "org.sonarqube" version "3.3"
 	id 'java'
 	id 'war'
 }
@@ -16,7 +17,7 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
-	implementation 'org.springframework.boot:spring-boot-starter-hateoas:2.5.2'
+	implementation 'org.springframework.hateoas:spring-hateoas:1.3.2'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.4.5'
 
@@ -30,19 +31,26 @@ dependencies {
 
 	implementation 'org.modelmapper:modelmapper:2.4.4'
 
-	//implementation 'com.epam.esm:logic:1.0-SNAPSHOT'
-
 	implementation project(':logic')
 
+	implementation 'javax.servlet:javax.servlet-api:4.0.1'
 	implementation 'org.slf4j:slf4j-api:1.7.31'
 	implementation 'org.slf4j:slf4j-log4j12:1.7.31'
 
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+subprojects {
+	sonarqube {
+		properties {
+			property "sonar.sources", "src"
+		}
+	}
 }
 
 configurations {
 	all*.exclude module : 'spring-boot-starter-logging'
+	all*.exclude module : 'spring-boot-starter-tomcat'
 }
 
 test {
