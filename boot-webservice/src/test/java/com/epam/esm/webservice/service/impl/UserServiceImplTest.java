@@ -89,6 +89,6 @@ class UserServiceImplTest {
 
     @Test
     void test_ShouldPass() {
-    	assertEquals(0, 0);
+    	assertEquals(0, 1);
     }
 }
